@@ -12,7 +12,6 @@ namespace Project_Hashtag.Pages
         public readonly AppDbContext database;
         public readonly AccessControl LoggedIn;
 
-
         public List<Post> Posts = new List<Post>();
         public List<User> Users = new List<User>();
         public List<Comment> Comments;
@@ -24,9 +23,7 @@ namespace Project_Hashtag.Pages
 
         public string Search;
         public bool OnlyTags;
-
         public bool orderByLikes = true;
-
 
         public SearchModel(AppDbContext database, AccessControl accessControl)
         {
@@ -37,8 +34,6 @@ namespace Project_Hashtag.Pages
             this.Comments = database.Comments.ToList();
             this.Reports = database.Reports.ToList();
             this.PeopleYouFollow = database.Follows.Where(f => f.FollowingId == LoggedIn.LoggedInAccountID).ToList();
-
-
 
         }
 
@@ -76,7 +71,6 @@ namespace Project_Hashtag.Pages
             return Page();
 
         }
-
         public IActionResult OnPostComment(int postID, string content, string search)
         {
             try
@@ -112,11 +106,8 @@ namespace Project_Hashtag.Pages
                 return RedirectToPage();
             }
         }
-
         public IActionResult OnPostLike(int id, string returnURL, string search)
         {
-
-
             Post post = database.Posts.FirstOrDefault(x => x.ID == id);
             Like like = database.Likes.FirstOrDefault(x => x.PostID == post.ID && x.UserID == LoggedIn.LoggedInAccountID);
 
@@ -154,7 +145,6 @@ namespace Project_Hashtag.Pages
             }
 
         }
-
         public IActionResult OnPostReport(int id, string search)
         {
             Post post = database.Posts.FirstOrDefault(x => x.ID == id);
@@ -190,7 +180,6 @@ namespace Project_Hashtag.Pages
                     return NotFound();
                 }
             }
-
         }
     }
 }

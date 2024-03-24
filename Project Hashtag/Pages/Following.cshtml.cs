@@ -47,20 +47,12 @@ public class FollowingModel : PageModel
                 .ToList();
             Comments = database.Comments.OrderByDescending(x => x.CreatedDate).ToList();
             Users = database.Users.ToList();
+
             FollowText = Follow.GetFollowStatus(userId, accessControl.LoggedInAccountID, database);
-            
-            
-            
             amountOfFollowers = database.Follows.Where(f => f.UserID == userId).Count();
-
             amountFollowing = database.Follows.Where(f => f.FollowingId == userId).Count();
-
-            
             this.Following = database.Follows.Where(f => f.FollowingId == userId).Select(x => x.UserID).ToList();
-
-            
             Users = database.Users.Where(x => Following.Contains(x.ID)).ToList();
-
         }
     }
 }

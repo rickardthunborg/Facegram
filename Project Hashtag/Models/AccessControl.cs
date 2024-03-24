@@ -10,7 +10,6 @@ namespace Project_Hashtag.Data
         public int LoggedInAccountID { get; set; }
         public string LoggedInAccountName { get; set; }
         public string LoggedInAvatar { get; set; }
-
         public AccessControl(AppDbContext db, IHttpContextAccessor httpContextAccessor)
         {
             var user = httpContextAccessor.HttpContext.User;

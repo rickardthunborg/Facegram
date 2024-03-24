@@ -11,15 +11,12 @@ namespace Project_Hashtag.Pages
         public AccessControl LoggedIn;
         private readonly FileRepository uploads;
 
-
         public ProfileSettingsModel(Project_Hashtag.Data.AppDbContext context, AccessControl accessControl, FileRepository uploads)
         {
             database = context;
             this.LoggedIn = accessControl;
             this.uploads = uploads;
         }
-
-
         public List<User> Users { get; set; } = new List<User>();
         public User User { get; set; } = default!;
         public List<Post> userPosts;
@@ -30,7 +27,6 @@ namespace Project_Hashtag.Pages
         public string search;
         public string biography;
         public string avatar;
-
 
         public IActionResult OnGetAsync(int userId)
         {
@@ -56,8 +52,6 @@ namespace Project_Hashtag.Pages
 
             return NotFound();
         }
-
-
         public async Task<IActionResult> OnPost( IFormFile? photo)
         {
             try
@@ -86,7 +80,6 @@ namespace Project_Hashtag.Pages
                 return NotFound();
             }
         }
-
         public IActionResult OnPostBiography(int userId, string content)
         {
 
