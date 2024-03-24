@@ -1,0 +1,137 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\FaceGramLogo.svg",
+      "PackagePath": "staticwebassets\\FaceGramLogo.svg"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\FavIcon.png",
+      "PackagePath": "staticwebassets\\FavIcon.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\PoppinsTVG-SemiBold.woff2",
+      "PackagePath": "staticwebassets\\PoppinsTVG-SemiBold.woff2"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\birdie.png",
+      "PackagePath": "staticwebassets\\birdie.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\comment.png",
+      "PackagePath": "staticwebassets\\comment.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\commentfilled.png",
+      "PackagePath": "staticwebassets\\commentfilled.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\commenthover.png",
+      "PackagePath": "staticwebassets\\commenthover.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\css\\test.css",
+      "PackagePath": "staticwebassets\\css\\test.css"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\deleteComment.png",
+      "PackagePath": "staticwebassets\\deleteComment.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\done.png",
+      "PackagePath": "staticwebassets\\done.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\follow.png",
+      "PackagePath": "staticwebassets\\follow.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\followbirdie.png",
+      "PackagePath": "staticwebassets\\followbirdie.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\hashtag.png",
+      "PackagePath": "staticwebassets\\hashtag.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\imgicon.png",
+      "PackagePath": "staticwebassets\\imgicon.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\imgiconhover.png",
+      "PackagePath": "staticwebassets\\imgiconhover.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\information.png",
+      "PackagePath": "staticwebassets\\information.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\like.png",
+      "PackagePath": "staticwebassets\\like.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\likehover.png",
+      "PackagePath": "staticwebassets\\likehover.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\likeliked.png",
+      "PackagePath": "staticwebassets\\likeliked.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\notificationbell.png",
+      "PackagePath": "staticwebassets\\notificationbell.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\play.png",
+      "PackagePath": "staticwebassets\\play.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\refresh.png",
+      "PackagePath": "staticwebassets\\refresh.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\report-flag-red.png",
+      "PackagePath": "staticwebassets\\report-flag-red.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\report-flag.png",
+      "PackagePath": "staticwebassets\\report-flag.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\search.png",
+      "PackagePath": "staticwebassets\\search.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\standard-profile-pic.png",
+      "PackagePath": "staticwebassets\\standard-profile-pic.png"
+    },
+    {
+      "Id": "C:\\Users\\ricka\\source\\repos\\Project Hashtag\\Project Hashtag\\wwwroot\\timeline.png",
+      "PackagePath": "staticwebassets\\timeline.png"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Project Hashtag.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Project Hashtag.props",
+      "PackagePath": "build\\Project Hashtag.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Project Hashtag.props",
+      "PackagePath": "buildMultiTargeting\\Project Hashtag.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Project Hashtag.props",
+      "PackagePath": "buildTransitive\\Project Hashtag.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

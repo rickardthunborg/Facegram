@@ -1,0 +1,210 @@
+﻿@page
+@model Project_Hashtag.Pages.SearchModel
+@{
+    ViewData["Title"] = "Facegram";
+}
+
+
+<ul class="flow">
+
+    <div class="spacerTop"></div>
+
+    <li id="topSearch">
+        <h3>Posts containing "@Model.Search"</h3>
+        <form method="get" asp-page="Search" id="sortSearch">
+            <h4>Sort by:</h4>
+            <input type="hidden" name="search" value="@Model.Search">
+            @if (Model.orderByLikes)
+            {
+                <input id="new"type="radio" name="sort" value="new">
+                <label for="new" class="option">
+                    Newest
+                </label>
+                <input id="pop"type="radio" name="sort" value="pop" checked>
+                <label for="pop" class="option">
+                    Popular
+                </label>
+            }
+            else
+            {
+                <input id="new" type="radio" name="sort" value="new" checked>
+                <label for="new" class="option">
+                    Newest
+                </label>
+                <input id="pop" type="radio" name="sort" value="pop">
+                <label for="pop" class="option">
+                    Popular
+                </label>
+            }
+            <label id="refresh">
+                <button type="submit"></button>
+            </label>
+        </form>
+    </li>
+
+	@foreach (var post in Model.QueriedPosts)
+    {
+        var reportedByUser = @Model.database.Reports.Any(x => x.UserID == Model.LoggedIn.LoggedInAccountID && x.PostID == post.ID);
+        var reports = @Model.database.Reports.Where(r => Model.FollowingIds.Contains(r.UserID) && r.PostID == post.ID).Count();
+        var poster = Model.Users.Where(u => u.ID == post.UserID).SingleOrDefault();
+
+        <li data-tag="@post.Tag">
+
+            @if (poster.ID != Model.LoggedIn.LoggedInAccountID)
+            {
+                @if (reports == 1)
+                {
+                    <div class="reportWarning"> <img src="~/information.png" /> <p> @reports person you follow has reported this post as untrustworthy.</p></div>
+                }
+                else if (reports > 0)
+                {
+                    <div class="reportWarning"> <img src="~/information.png" /> <p> @reports people you follow have reported this post as untrustworthy.</p></div>
+                }
+            }
+            <div class="postProfile">
+                <a asp-page="Profile" asp-route-userId="@poster." class="postProfileBox">
+                    <img class="pic-top" src="@poster.Avatar" alt="error">
+                    <pre>@poster.Name</pre>
+                </a>
+
+                @if (reportedByUser)
+                {
+                    <label class="report reported"> <button class="popupButton"></button> </label>
+                }
+                else
+                {
+                    <label class="report"> <button class="popupButton"></button> </label>
+                }
+
+                <p>· @post.TimeSincePost()</p>
+            </div>
+
+            @*
+        Below is the report popup
+        *@
+            <div class="popupForm" style="display: none;">
+                @if (reportedByUser)
+                {
+                    <p>Do you want to remove your report on this post?</p>
+                }
+                else
+                {
+                    <p>Do you want to report this post?</p>
+                }
+
+                <form method="post" asp-page-handler="report" asp-route-id="@post.ID"> 
+                <input type="hidden" name="search" value="@Request.Query["search"]" />
+                <button type="submit">Yes</button> </form>
+
+                <button id="closeButton">No</button>
+            </div>
+
+
+            @*
+        Adds post text, and picture if the post has one
+        *@
+            <p class="postText"> @post.Description</p>
+            @if (post.PictureUrl != null)
+            {
+                <div class="image">
+                    <img src="@post.PictureUrl" alt="Error loading picture" />
+                </div>
+            }
+
+            <a id="adSpace" target="_blank"></a>
+
+            @*
+        Interaction bar conatins: like button, comment button and tag
+        *@
+            <div class="interaction">
+                <form method="post" asp-page-handler="like" asp-route-id="@post.ID">
+                    <input type="hidden" name="search" value="@Request.Query["search"]" />
+                    @if (post.IsLiked(Model.LoggedIn.LoggedInAccountID, Model.database))
+                    {
+                        <label id="like" class="liked">
+                            <button type="submit"></button>
+                            <p>@post.LikeCount</p>
+                        </label>
+                    }
+                    else
+                    {
+                        <label id="like">
+                            <button type="submit"></button>
+                            <p>@post.LikeCount</p>
+                        </label>
+                    }
+                </form>
+                <a asp-page="post" asp-route-postID="@post.ID" class="commentContainer">
+                    <div class="comments">
+                    </div>
+                    <p class="commentCount">@Model.Comments.Where(x => x.PostID == post.ID).Count()</p>
+                </a>
+
+
+                @*
+            Adds tag if tag is not null
+            *@
+                @if (post.Tag != "" && post.Tag != null)
+                {
+                    <form method="get" asp-page="Search" class="tagContainer">
+                        <input type="hidden" name="search" value="@post.Tag">
+                        <label class="tags">
+                            <button type="submit"></button>
+                            <p>@post.Tag</p>
+                        </label>
+                    </form>
+                }
+            </div>
+            @if (@Model.Comments.Where(x => x.PostID == post.ID).Count() > 0)
+            {
+                <p class="commentSectionText">Comments: <a asp-page="post" asp-route-postID="@post.ID"> View all</a> </p>
+                @for (int j = 0; j < Math.Min(3, Model.Comments.Where(c => c.PostID == post.ID).Count()); j++)
+                {
+                    var comment = @Model.Comments.Where(c => c.PostID == post.ID).OrderByDescending(c => c.CreatedDate).ToList()[j];
+                    <div id="comment">
+                        <div class="commentProfilePic">
+                            <a asp-page="Profile" asp-route-userId="@comment.User.ID">
+                                <img src="@comment.User.Avatar" class="pic-top" />
+                            </a>
+                        </div>
+                        <div class="commentText">
+                            <a asp-page="Profile" asp-route-userId="@comment.User.ID"> @comment.User.Name</a>
+                            <p>@comment.Text </p>
+                        </div>
+                    </div>
+                    <p class="commentTime">@comment.TimeSinceComment()</p>
+
+                }
+            }
+            <form method="post" asp-page-handler="comment" asp-route-postID="@post.ID" id="postComment">
+                <img class="pic-top" src="@Model.database.Users.Single(x => x.ID == @Model.LoggedIn.LoggedInAccountID).Avatar" alt="error">
+                <textarea required name="content" placeholder="Add a comment..." rows="1" oninput="autoExpand(this)"></textarea>
+                <input hidden name="userId" value="@post.UserID">
+                <input type="hidden" name="search" value="@Request.Query["search"]" />
+                <button type="submit">Comment</button>
+            </form>
+
+        </li>
+    }
+</ul>
+
+
+@if (Model.QueriedUsers.Count() != 0)
+{
+<ul class="flow">
+
+    <li class="queryUser">
+        <h3>Matching users</h3>
+
+    @foreach(var user in Model.QueriedUsers)
+    {
+            <p class="listedUser">
+                <a asp-page="Profile" asp-route-userId="@user.ID" class="postProfileBox"> <img src="@user.Avatar" class="pic-top"/> <span> @user.Name</span></a>
+            </p>
+    }
+    </li>
+
+</ul>
+    
+}
+

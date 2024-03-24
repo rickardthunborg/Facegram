@@ -1,0 +1,47 @@
+﻿@page
+@model Project_Hashtag.Pages.ProfileSettingsModel
+@inject Project_Hashtag.Data.AccessControl accessControl
+@inject Project_Hashtag.Data.AppDbContext database
+@{
+}
+
+<div id="ProfileSettingsDiv">
+	<h1>Edit Profile - @Model.User.Name</h1>
+	<div class="editBio">
+		<aside class="leftBio">
+			<label for="bio">Biography</label>
+		</aside>
+		<div class="rightBio">
+			<form method="post" asp-page-handler="biography">
+
+				<input hidden name="userId" value="@Model.User.ID">
+				<textarea rows="1" name="content" id="bio" type="text" oninput="autoExpand(this)">@Model.User.Biography</textarea>
+				<button type="submit" id="bioButton">Update bio</button>
+			</form>
+		</div>
+	</div>
+	<div class="editBio">
+		<aside class="leftBio">
+			<h3>Profile picture: </h3>
+		</aside>
+		<div class="rightBio picAddEdit">
+			<img src="@Model.User.Avatar" id="oldImage"/>
+			<form method="post" enctype="multipart/form-data" class="editPicForm">
+				<div>
+					<p>New picture: </p>
+				<label id="addPic">
+					<input type="file" name="photo" id="photo-input">
+					<span id="file-label"></span>
+				</label>
+
+				</div>
+				<button type="submit">Update picture</button>
+			</form>
+		</div>
+		
+	</div>
+	<a asp-page="Profile" asp-route-userId="@accessControl.LoggedInAccountID">
+		<button id="backToProfileButton">Back To Profile</button>
+	</a>
+	
+</div>
